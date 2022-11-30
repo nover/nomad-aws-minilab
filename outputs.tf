@@ -1,9 +1,9 @@
 output "private_ip_addr" {
-    value = aws_instance.nomad-node[*].private_ip
+    value = [aws_instance.nomad-node[*].private_ip]
 }
 
 output "public_ip_addr" {
-    value = aws_instance.nomad-node[*].public_ip
+    value = [aws_instance.nomad-node[*].public_ip]
 }
 
 output "consul_url" {
@@ -19,5 +19,5 @@ output "ec2_nodes" {
 }
 
 output "connection_info" {
-	value = "ssh -i ${aws_instance.nomad-node[*].key_name} ${aws_instance.nomad-node[*].public_dns}"
+	value = "ssh -i ${aws_instance.nomad-node[0].key_name} ${aws_instance.nomad-node[0].public_dns}"
 }
